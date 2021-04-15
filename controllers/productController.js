@@ -1,4 +1,4 @@
-let controller = {
+let productController = {
     product: function (req, res){
         return res.render('product', {title: 'Tec'})
     },
@@ -10,4 +10,4 @@ let controller = {
     }
 }
 
-module.exports = controller
+module.exports = productController

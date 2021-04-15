@@ -1,4 +1,4 @@
-let controller = {
+let usersController = {
     profile: function (req, res){
         return res.render('profile', {title: 'Tec'})
     },
@@ -13,4 +13,4 @@ let controller = {
     }
 }
 
-module.exports = controller
+module.exports = usersController

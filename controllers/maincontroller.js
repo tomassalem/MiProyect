@@ -1,7 +1,7 @@
-let controller = {
+let mainController = {
     index: function (req, res){
         return res.render('index', {title: 'Tec'})
     }
 }
 
-module.exports = controller
+module.exports = mainController
