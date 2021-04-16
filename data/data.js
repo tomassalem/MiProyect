@@ -15,7 +15,6 @@ let productosComputacion = {
             nombre: "Mouse inalambrico",
             descripcion: "Los mouses Logitech se adaptan a la forma de tu mano para proporcionarte horas de comodidad. Sin necesidad de mover el brazo para deslizar el cursor, tu mano se fatigará menos. Son ideales para cualquier espacio de trabajo y quienes tienen la mesa llena de diversos objetos.",
             precio: "$780",
-            foto: Ga,
             rating: "4 estrellas",
             colores:["Negro","Rojo","Blanco"],
 
@@ -47,7 +46,7 @@ let productosComputacion = {
         precio: "$59999",
         rating: "4 estrellas",
         colores:["Negro","Blanco","Azul"],
-        },
+        }
      
     ]
 }
