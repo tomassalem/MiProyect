@@ -10,6 +10,10 @@ let usersController = {
     },
     profileEdit: function (req, res){
         return res.render('profileEdit', {title: 'Tec'})
+    },
+    signIn: function (req, res){
+        console.log(req.body.user)
+        return res.render('profileEdit', {title: 'Tec'})
     }
 }
 
