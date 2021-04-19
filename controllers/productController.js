@@ -7,10 +7,8 @@ let productController = {
     },
     searchResults: function (req, res){
         return res.render('searchResults', {title: 'Tec'})
-    },
-    getDetail: function(req, res){
-        return res.render('getDetail', {title:'Tec'})
     }
+    
 }
 
 module.exports = productController

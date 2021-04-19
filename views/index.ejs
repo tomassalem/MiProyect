@@ -73,25 +73,29 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Publicaciones</h2>
+				<h2 class="products-title">Publicaciones <%=title%></h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<% for(let i=0; i<productosCompu.lista.length; i++) {%>    
+			<% for(let i=0; i<8; i++) {%>    
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="product/detail/<%=productosCompu.lista[i].id%>"> 
-							<figure class="product-box_image">
-									<img src="<%= productosCompu.lista[i].foto %>" alt="">
-								</figure>   
+						<a href="product/detail/<%=productosCompu.lista[i].id%>">
 							<article class="p-3 text-center"> 
 								<h2> <%= productosCompu.lista[i].nombre %> </h2>
-							<p>Descripción: <%= productosCompu.lista[i].descripcion %></p>
+								<figure class="product-box_image">
+									<img src="<%= productosCompu.lista[i].foto %>" alt="">
+									<h4><%= productosCompu.lista[i].precio %></h4>
+								</figure>
+								<article class="product-box_data">
+									<p>Descripción: <%= productosCompu.lista[i].descripcion %></p>
+								</article>
+								
 							
-						</article>
+						    </article>
 						</a>
 					</section>
 				</div>
-		          <% } %>
+		    <% } %>
 			<!-- <div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
 					<a href="product.html">
@@ -153,7 +157,7 @@
 			</div>
 		</div>
 	</div>
-	<!-- /Novedades -->
+	<!- Novedades -->
 	<!-- Más comentados -->
 	<div class="container products-wrapper">
 		<div class="row">
@@ -161,7 +165,27 @@
 				<h2 class="products-title">Más comentados</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<div class="col-12 col-sm-6 col-lg-3">
+			<% for(let i=8; i<productosCompu.lista.length; i++) {%>    
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="product/detail/<%=productosCompu.lista[i].id%>">
+							<article class="p-3 text-center"> 
+								<h2> <%= productosCompu.lista[i].nombre %> </h2>
+								<figure class="product-box_image">
+									<img src="<%= productosCompu.lista[i].foto %>" alt="">
+									<h4><%= productosCompu.lista[i].precio %></h4>
+								</figure>
+								<article class="product-box_data">
+									<p>Descripción: <%= productosCompu.lista[i].descripcion %></p>
+								</article>
+								
+							
+						    </article>
+						</a>
+					</section>
+				</div>
+		    <% } %>
+			<!-- <div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
 					<a href="product.html">
 						<figure class="product-box_image">
@@ -202,23 +226,9 @@
 						</article>
 					</a>
 				</section>
-			</div>
-			<div class="col-12 col-sm-6 col-lg-3">
-				<section class="product-box">
-					<a href="product.html">
-						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
-						</figure>
-						<article class="product-box_data">
-							<h2>Nombre del producto</h2>
-							<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eaque delectus ex</p>
-							<p>Comentarios: 12</p>
-						</article>
-					</a>
-				</section>
-			</div>
+			</div> -->
 		</div>
-	</div> -->
+	</div>
 	<!-- /Más comentados -->
 
 
