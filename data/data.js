@@ -5,7 +5,7 @@ let productosComputacion = {
             nombre: "Teclado Gamer",
             descripcion: "La gran calidad del Redragon Kumara K552, y su precio económico lo vuelven un atractivo ideal para que te diviertas frente a la pantalla. Su ergonomía, su base antidelizante y su rápido tiempo de respuesta permite que tus juegos favoritos se sientan más cerca que nunca, al alcance de tus manos.",
             precio: "$4750",
-            foto: "https://www.google.com/aclk?sa=l&ai=DChcSEwiVlZehif7vAhWOtbMKHdrHBJ0YABAGGgJxbg&sig=AOD64_3JzhfB7Ol2nEtiZuRah9UcE2jymw&adurl&ctype=5&ved=2ahUKEwjp2oehif7vAhXCuJUCHfUlAGQQwg96BAgBEFk",
+            foto: "https://mercafree.com/wp-content/uploads/2020/01/teclado-gamer-redragon-k556rgb-sp-devarajas-D_NQ_NP_988389-MCO29786835909_032019-F.png",
             rating: "5 estrellas",
             colores:["Rojo","Blanco", "Multicolor"],
             
