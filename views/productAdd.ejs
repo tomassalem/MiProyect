@@ -79,6 +79,30 @@
 			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
 			////////////////
 			</h2>
+			<div class="row">
+				<!-- Show the "ultimos" products -->
+				<form class="form" action="/users/login" method="get">
+					<div class="mb-3">
+						<label for="nombre" class="form-label">Nombre Del Producto</label>
+						<input class="form-control form-control-lg" type="text" name="nombre" id="nombre" placeholder="Ingresá tu nombre">
+					</div>
+					
+					<div class="mb-3">
+						<label for="descripcion" class="form-label">Descripcion del producto</label>
+						<input class="form-control form-control-lg" type="text" name="apellido" id="apellido" placeholder="Ingresá tu apellido">
+					</div>
+					<div class="mb-3">
+						<label for="imagen" class="form-label">Insertar imagen del Producto</label>
+						<input class="form-control form-control-lg" type="file" name="imagen" id="imagen" placeholder="Insertar imagen">
+					</div>
+					
+					
+					<div class="mb-3">
+						<button class="btn btn-secondary btn-lg" type="submit">Agregar Producto</button>
+					</div>
+				</form>
+			</div>
+			
 
 
 	<!-- footer -->
