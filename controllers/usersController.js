@@ -1,6 +1,7 @@
+let productosComputacion = require('../data/data');
 let usersController = {
     profile: function (req, res){
-        return res.render('profile', {title: 'Tec'})
+        return res.render('profile', {title: 'Tec', productosCompu: productosComputacion})
     },
     register: function (req, res){
         return res.render('register', {title: 'Tec'})
@@ -10,9 +11,6 @@ let usersController = {
     },
     profileEdit: function (req, res){
         return res.render('profile-Edit', {title: 'Tec'})
-    },
-    signIn: function (req, res){
-        return res.render('profile', {title: 'Tec'})
     }
 }
 

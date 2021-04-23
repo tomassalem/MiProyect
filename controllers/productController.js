@@ -14,7 +14,7 @@ let productController = {
         return res.render('productAdd', {title: 'Tec'})
     },
     searchResults: function (req, res){
-        return res.render('searchResults', {title: 'Tec'})
+        return res.render('searchResults', {title: 'Tec',productosCompu:productos})
     }
     
 }

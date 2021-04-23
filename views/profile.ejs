@@ -42,12 +42,32 @@
 			<div class="col-12">
 				<h2 class="products-title">Mis productos</h2>
 			</div>
+			<% for(let i=0; i<8; i++) {%>    
+				<div class="col-12 col-sm-6 col-lg-3">
+					<section class="product-box">
+						<a href="/product/detail/<%=productosCompu.lista[i].id%>">
+							<article class="p-3 text-center"> 
+								<h2 class="hipervinculo"> <%= productosCompu.lista[i].nombre %> </h2>
+								<figure class="product-box_image">
+									<img src="<%= productosCompu.lista[i].foto %>" alt="">
+									<h4><%= productosCompu.lista[i].precio %></h4>
+								</figure>
+								<article class="product-box_data">
+									<p>Descripción: <%= productosCompu.lista[i].descripcion %></p>
+								</article>
+								
+							
+						    </article>
+						</a>
+					</section>
+				</div>
+		    <% } %>
 			<!-- Show mis productos -->
-			<div class="col-12 col-sm-6 col-lg-3">
+			<!-- <div class="col-12 col-sm-6 col-lg-3">
 				<section class="product-box">
-					<a href="product.html">
+					<a href="/product/detail/1">
 						<figure class="product-box_image">
-							<img src="images/products/default-image.png" alt="cafetera moulinex">
+							<img src="https://mercafree.com/wp-content/uploads/2020/01/teclado-gamer-redragon-k556rgb-sp-devarajas-D_NQ_NP_988389-MCO29786835909_032019-F.png" alt="cafetera moulinex">
 						</figure>
 						<article class="product-box_data">
 							<h2>Nombre del producto</h2>
@@ -160,7 +180,7 @@
 							<p>Comentarios: 12</p>
 						</article>
 					</a>
-				</section>
+				</section> -->
 			</div>
 		</div>
 	</div>
