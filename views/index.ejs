@@ -9,7 +9,6 @@
 	
 	<!-- Banner -->
 	<div class="banner">
-		<img src="images/img-home-banner.jpg" alt="Banner de ofertas">
 	</div>
 	<!-- /Banner -->
 
@@ -25,7 +24,7 @@
 					<section class="product-box">
 						<a href="product/detail/<%=productosCompu.lista[i].id%>">
 							<article class="p-3 text-center"> 
-								<h2> <%= productosCompu.lista[i].nombre %> </h2>
+								<h2 class="hipervinculo"> <%= productosCompu.lista[i].nombre %> </h2>
 								<figure class="product-box_image">
 									<img src="<%= productosCompu.lista[i].foto %>" alt="">
 									<h4><%= productosCompu.lista[i].precio %></h4>
@@ -106,7 +105,7 @@
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
-				<h2 class="products-title">Más comentados</h2>
+				<h2 class="products-title">Más vistos esta semana</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
 			<% for(let i=8; i<productosCompu.lista.length; i++) {%>    
@@ -114,7 +113,7 @@
 					<section class="product-box">
 						<a href="product/detail/<%=productosCompu.lista[i].id%>">
 							<article class="p-3 text-center"> 
-								<h2> <%= productosCompu.lista[i].nombre %> </h2>
+								<h2 class="hipervinculo"> <%= productosCompu.lista[i].nombre %></h2>
 								<figure class="product-box_image">
 									<img src="<%= productosCompu.lista[i].foto %>" alt="">
 									<h4><%= productosCompu.lista[i].precio %></h4>

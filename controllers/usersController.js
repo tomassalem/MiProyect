@@ -9,7 +9,7 @@ let usersController = {
         return res.render('login', {title: 'Tec'})
     },
     profileEdit: function (req, res){
-        return res.render('profileEdit', {title: 'Tec'})
+        return res.render('profile-Edit', {title: 'Tec'})
     },
     signIn: function (req, res){
         return res.render('profile', {title: 'Tec'})
