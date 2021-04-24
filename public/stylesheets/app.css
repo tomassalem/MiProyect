@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
 
 
+
 /*====== Variables ======*/
 :root {
   --yellow: #EAC926;
@@ -178,9 +179,11 @@ hr {
 .products-title {
   font-size: 2.4em;
   font-weight: 400;
-  color: var(--dark-blue);
+  color: #5cdb95;
   font-family: 'Zen Dots', cursive;
 }
+
+
 
 .product-box {
   background-color: #ffffff;
@@ -272,7 +275,7 @@ hr {
 
 /*====== Footer ======*/
 .main-footer {
-  background-color: #ffffff;
+  background-color: #5cdb95;
   padding: 20px 0;
   margin-top: 80px;
 }
@@ -336,13 +339,14 @@ hr {
 
 .product-detail-description {
   padding: 15px 15px 15px 40px;
-  font-size: 1.8em;
+  font-size: 3em;
   line-height: 1.5;
 }
 
 .product-detail-price {
   font-size: 5.5em;
-  margin: 10px 0;
+  margin-left: auto;
+  margin-right: auto;
 }
 .product-detail .form{
   padding: 0 15px;

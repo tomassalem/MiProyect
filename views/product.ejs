@@ -11,6 +11,7 @@
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
 			<h2 class="products-title"><%=title%> <%=producto.nombre%> </h2> 
+
 			<p class="product-detail-description">
 				<a href="/product/productAdd">Editar</a>
 			</p>
@@ -25,6 +26,11 @@
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
+						<article>
+							<h4 class="product-detail-price"><%= producto.precio %></h4>
+						</article>
+						
+
 						<article>
 							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
