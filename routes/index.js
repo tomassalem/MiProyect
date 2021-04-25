@@ -6,7 +6,6 @@ const { route } = require('./product');
 
 /* GET home page. */
 router.get('/', mainController.index);
-router.get('/headerLogueado', mainController.headerLogueado);
 
 module.exports = router;
 
