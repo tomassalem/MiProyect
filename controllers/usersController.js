@@ -1,4 +1,7 @@
 let productosComputacion = require('../data/data');
+const db = require('../database/models')
+
+const op = db.Sequelize.Op
 let usersController = {
     profile: function (req, res){
         return res.render('profile', {title: 'Tec', productosCompu: productosComputacion})
