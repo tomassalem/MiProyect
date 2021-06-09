@@ -63,7 +63,41 @@ let productController = {
                 console.log(error);
             })
     },
-    
+    showProductEdit: function(req, res){
+        db.Product.findByPk(req.params.id)
+        .then(resultado => {
+            res.render('productEdit', {
+                producto: resultado
+            })
+
+        })
+        
+    },
+    updateProductEdit: function(req, res){
+        let data = req.body; // req.body son todos los campos del formulario (nombre, descripcion, imagen)
+
+        //2)Crear pelicula nueva.
+        let producto = {
+            image: req.file.filename, // filename = como se llama la imagen
+            titulo: data.titulo,    
+            usuariosId: 1, // cambiar cuando tenga login.        
+            description: data.description
+        }
+        //3)Guardar película
+        db.Product.update(producto, {
+            where:{
+                id:req.body.id
+            }
+        })
+            .then( (productoUpdateado) => {
+        //4)Redirección
+                return res.redirect('/product/detail/'+req.body.id);
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
 }
 
 module.exports = productController
