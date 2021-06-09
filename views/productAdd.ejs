@@ -25,19 +25,19 @@
 			</h2> -->
 			<div class="row">
 				<!-- Show the "ultimos" products -->
-				<form class="form" action="/users/login" method="get">
+				<form class="form" action="/product/productAdd" method="post" enctype="multipart/form-data">
 					<div class="mb-3">
 						<label for="nombre" class="form-label">Nombre Del Producto</label>
-						<input class="form-control form-control-lg" type="text" name="nombre" id="nombre" placeholder="Ingresá el nombre" required>
+						<input class="form-control form-control-lg" type="text" name="titulo" id="nombre" placeholder="Ingresá el nombre" required>
 					</div>
 					
 					<div class="mb-3">
 						<label for="descripcion" class="form-label">Descripcion del producto</label>
-						<input class="form-control form-control-lg" type="text" name="apellido" id="apellido" placeholder="Ingresá la descripción" required>
+						<input class="form-control form-control-lg" type="text" name="description" id="apellido" placeholder="Ingresá la descripción" required>
 					</div>
 					<div class="mb-3">
 						<label for="imagen" class="form-label">Insertar imagen del Producto</label>
-						<input class="form-control form-control-lg" type="file" name="imagen" id="imagen" placeholder="Insertar imagen" required>
+						<input class="form-control form-control-lg" type="file" name="image" id="imagen" placeholder="Insertar imagen" required>
 					</div>
 					
 					

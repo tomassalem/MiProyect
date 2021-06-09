@@ -1,41 +1,39 @@
 let productos = require('../data/data.js');
+const db = require('../database/models');
 let productController = {
     product: function (req, res){
-        let detalleProducto;
-        for(let i=0; i<productos.lista.length; i++){
-            if(req.params.id == productos.lista[i].id){
-                detalleProducto = productos.lista[i];
-                return res.render('product', {title: 'Tec', producto: detalleProducto})
-            }
-        }
-        
+        // let detalleProducto;
+        // for(let i=0; i<productos.lista.length; i++){
+        //     if(req.params.id == productos.lista[i].id){
+        //         detalleProducto = productos.lista[i];
+        //         return res.render('product', {title: 'Tec', producto: detalleProducto})
+        //     }
+        // }
+        db.Product.findByPk(req.params.id)
+        .then(data => {
+            return res.render('product', {title: 'Tec', producto: data})
+        })
+        .catch(error =>{
+            console.log(error);
+        })
     },
-    productAdd: function (req, res){
+    showProductAdd: function (req, res){
         return res.render('productAdd', {title: 'Tec'})
     },
     searchResults: function (req, res){
         return res.render('searchResults', {title: 'Tec',productosCompu:productos})
     },
-    create: function(req, res){
-        //Mostrar formulario de carga de productos
-        db.User.findAll()
-            .then( data => {
-                return res.render('', {users:data});
-            })
-            .catch(error => {
-                console.log(error);
-            })
-    },
-    store: function(req, res){
-        //Método para guardar nueva película.
-        //1) Obtener datos del formulario
-        let data = req.body;
+    store: function(req, res){ // meter en la base de datos los productos nuevos
+        //Método para guardar nuevo producto.
+        //1) Obtener datos, agarrar informacion del formulario
+        let data = req.body; // req.body son todos los campos del formulario (nombre, descripcion, imagen)
 
         //2)Crear pelicula nueva.
         let producto = {
-            titulo: data.titulo,            
-            description: data.description,
-            image: data.image
+            image: req.file.filename, // filename = como se llama la imagen
+            titulo: data.titulo,    
+            usuariosId: 1, // cambiar cuando tenga login.        
+            description: data.description
         }
         //3)Guardar película
         db.Product.create(producto)
