@@ -22,7 +22,7 @@ var storage = multer.diskStorage({
 /* GET home page. */
 router.get('/productAdd', productController.showProductAdd);
 router.post('/productAdd', upload.single('image') ,productController.store); // nos permite guardar la imagen. El titulo y descripcion se guardan con el post
-router.get('/searchResults', productController.searchResults);
+router.get('/searchResults', productController.search);
 router.get('/detail/:id', productController.product);
 
 module.exports = router;

@@ -1,5 +1,6 @@
 let productos = require('../data/data.js');
 const db = require('../database/models');
+const op = db.Sequelize.Op
 let productController = {
     product: function (req, res){
         // let detalleProducto;
@@ -20,9 +21,26 @@ let productController = {
     showProductAdd: function (req, res){
         return res.render('productAdd', {title: 'Tec'})
     },
-    searchResults: function (req, res){
-        return res.render('searchResults', {title: 'Tec',productosCompu:productos})
-    },
+    // searchResults: function (req, res){
+    //     return res.render('searchResults', {title: 'Tec',productosCompu:productos})
+    // },
+    search: function(req, res){
+        let info = req.query.search // agarramos lo que la persona buscó
+        db.Product.findAll( // buscame todos los productos es una promesa que en algun momento se va a cumplir
+            {
+                where: [{ // where = condicion
+                    titulo: {[op.like]:'%'+info+'%'} 
+                }]
+            }
+
+        )
+            .then( data => { // nombre que le das a lo que antes pediste, es decir, lo que la persona buscó.
+                return res.render('searchResults', {title: 'Tec', productosCompu: data}) // mando a la vista la data
+            })
+            .catch(error =>{
+                console.log(error);
+            })
+    },    
     store: function(req, res){ // meter en la base de datos los productos nuevos
         //Método para guardar nuevo producto.
         //1) Obtener datos, agarrar informacion del formulario
