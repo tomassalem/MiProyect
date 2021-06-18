@@ -10,27 +10,23 @@
 	<!-- product detail -->
 	<div class="container products-wrapper">
 		<div class="d-flex align-items-center">
-			<h2 class="products-title"><%=title%> <%=producto.nombre%> </h2> 
+			<h2 class="products-title"><%=title%> <%=producto.titulo%> </h2> 
 
 			<p class="product-detail-description">
-				<a href="/product/productAdd">Editar</a>
+				<a href="/product/productEdit/<%=producto.id%>" >Editar</a>
 			</p>
 		</div>
+		
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
-					<img src="<%=producto.foto%>" alt="" class="product-detail-img">
+					<img src="/images/products/<%=producto.image%>" alt="" class="product-detail-img">
 					<p class="product-detail-description">
-						<%=producto.descripcion%>
+						<%=producto.description%>
 					</p>
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<article>
-							<h4 class="product-detail-price"> Colores: <%= producto.colores %></h4>
-						</article>
-						
-
 						<article>
 							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
@@ -78,12 +74,25 @@
 					<form class="form" action="" method="POST">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+
 					</form>
+
 					<hr>
+
 				</div>
 			</div>
 		</div>
 	</div>
+	<h2>Persona que creó el producto</h2>
+	<% for(let i=0; i<producto.usuarios.length; i++){%>
+		<li><%= producto.usuarios[i].nombre + "" + producto.usuarios[i].apellido%> </li>
+
+	<% }  %>  
+	<ul>
+		
+
+		
+	</ul>
 	<!-- /product detail -->
 
 	<!-- footer -->

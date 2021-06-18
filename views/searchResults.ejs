@@ -16,18 +16,17 @@
 				<h2 class="products-title">Resultados de búsqueda</h2>
 			</div>
 			<!-- Show the "ultimos" products -->
-			<% for(let i=0; i<8; i++) {%>    
+			<% for(let i=0; i<productosCompu.length; i++) {%>    
 				<div class="col-12 col-sm-6 col-lg-3">
 					<section class="product-box">
-						<a href="/product/detail/<%=productosCompu.lista[i].id%>">
+						<a href="/product/detail/<%=productosCompu[i].id%>">
 							<article class="p-3 text-center"> 
-								<h2 class="hipervinculo"> <%= productosCompu.lista[i].nombre %> </h2>
-								<h4><%= productosCompu.lista[i].precio %></h4>
+								<h2 class="hipervinculo"> <%= productosCompu[i].titulo %></h2>
 								<figure class="product-box_image">
-									<img src="<%= productosCompu.lista[i].foto %>" alt="">
+									<img src="/images/products/<%= productosCompu[i].image %>" alt="">
 								</figure>
 								<article class="product-box_data">
-									<p>Descripción: <%= productosCompu.lista[i].descripcion %></p>
+									<p>Descripción: <%= productosCompu[i].description %></p>
 								</article>
 								
 							
@@ -36,7 +35,8 @@
 					</section>
 				</div>
 		    <% } %>
-
+		</div>
+	</div>
 
 	<!-- footer -->
 	<%- include('./partials/footer') %> 
