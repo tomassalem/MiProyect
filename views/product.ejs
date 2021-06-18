@@ -27,15 +27,17 @@
 				</article>
 				<div class="col-12 col-lg-4">
 					<section class="comments">
-						<article>
-							<img src="https://via.placeholder.com/35" alt="">
-							<div class="data">
-								<p class="user">
-								<strong> <a href="/users/profile">Nombre usuario: </a> </strong>
-								 Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora doloribus enim aspernatur fugit corrupti suscipit sit dolore magnam, praesentium explicabo inventore molestias facilis labore. Fugit ipsa mollitia odit inventore consequuntur.</p>
-							</div>
-						</article>
-						<article>
+						<% producto.comentarios.forEach(comentario => { %>
+							<article>
+								<img src="/images/users/<%= comentario.usuarios.image %>" alt="">
+								<div class="data">
+									<p class="user">
+									<strong> <a href="/users/profile/<%= comentario.usuarios.id %>"><%= comentario.usuarios.nombre %>: </a> </strong>
+									<%= comentario.texto %></p>
+								</div>
+							</article> 
+						<% }) %>
+						<!-- <article>
 							<img src="https://via.placeholder.com/35" alt="">
 							<div class="data">
 								<p class="user">
@@ -68,7 +70,7 @@
 									Texto del comentario que escribió el usuario Lorem ipsum dolor sit amet consectetur adipisicing elit.
 									Tempora doloribus enim aspernatur fugit corrupti suscipit sit dolore</p>
 							</div>
-						</article>
+						</article> -->
 
 					</section>
 					<form class="form" action="" method="POST">
@@ -83,7 +85,7 @@
 			</div>
 		</div>
 	</div>
-	<h2>Persona que creó el producto</h2>
+	<h2><a href="/users/profile/<%= producto.usuarios.id %>"><%= producto.usuarios.nombre %></a></h2>
 	<% for(let i=0; i<producto.usuarios.length; i++){%>
 		<li><%= producto.usuarios[i].nombre + "" + producto.usuarios[i].apellido%> </li>
 
