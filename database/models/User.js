@@ -10,6 +10,14 @@ module.exports = function(sequelize, dataTypes){
             primaryKey: true,
             type: dataTypes.INTEGER,
         },
+        createdAt:{
+            type: dataTypes.DATE,
+            allowNull:true,
+        },
+        updatedAt:{
+            type: dataTypes.DATE,
+            allowNull:true,
+        },
         nombre:{
             type: dataTypes.STRING,
         },
@@ -40,6 +48,19 @@ module.exports = function(sequelize, dataTypes){
     }
 
    const User = sequelize.define(alias, cols, config);
+   User.associate = function(models){
+       User.hasMany(models.Product,{
+           as: 'tablaproductos', //como voy a llamar a la relacion dentro del controlador
+           foreignKey: 'usuariosId'
+       })
+   },
+   User.associate = function(models){
+       User.hasMany(models.Comment,{
+           as: 'comentarios', //como la voy a llamar en el controlador
+           foreignKey: 'usuariosId'
+       })
+   }
+
 
    return User;
 }

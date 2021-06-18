@@ -16,6 +16,7 @@
 				<a href="/product/productEdit/<%=producto.id%>" >Editar</a>
 			</p>
 		</div>
+		
 		<div class="product-detail">
 			<div class="row">
 				<article class="col-12 col-lg-8 product-detail-info">
@@ -73,12 +74,25 @@
 					<form class="form" action="" method="POST">
 						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
+
 					</form>
+
 					<hr>
+
 				</div>
 			</div>
 		</div>
 	</div>
+	<h2>Persona que creó el producto</h2>
+	<% for(let i=0; i<producto.usuarios.length; i++){%>
+		<li><%= producto.usuarios[i].nombre + "" + producto.usuarios[i].apellido%> </li>
+
+	<% }  %>  
+	<ul>
+		
+
+		
+	</ul>
 	<!-- /product detail -->
 
 	<!-- footer -->

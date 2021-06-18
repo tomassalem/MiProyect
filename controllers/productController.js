@@ -1,6 +1,6 @@
 let productos = require('../data/data.js');
 const db = require('../database/models');
-const op = db.Sequelize.Op
+const op = db.Sequelize.Op //llamamos al operador que filtra el resultado de la busqueda
 let productController = {
     product: function (req, res){
         // let detalleProducto;
@@ -10,7 +10,13 @@ let productController = {
         //         return res.render('product', {title: 'Tec', producto: detalleProducto})
         //     }
         // }
-        db.Product.findByPk(req.params.id)
+        let id = req.params.id;
+        db.Product.findByPk(id, {
+            include : [{association: 'usuarios',include: {association : 'comentarios'}}
+                
+                
+            ]
+        })
         .then(data => {
             return res.render('product', {title: 'Tec', producto: data})
         })
@@ -46,14 +52,14 @@ let productController = {
         //1) Obtener datos, agarrar informacion del formulario
         let data = req.body; // req.body son todos los campos del formulario (nombre, descripcion, imagen)
 
-        //2)Crear pelicula nueva.
+        //2)Crear producto nuevo.
         let producto = {
             image: req.file.filename, // filename = como se llama la imagen
             titulo: data.titulo,    
             usuariosId: 1, // cambiar cuando tenga login.        
             description: data.description
         }
-        //3)Guardar película
+        //3)Guardar producto
         db.Product.create(producto)
             .then( (productoCreado) => {
         //4)Redirección
@@ -64,10 +70,13 @@ let productController = {
             })
     },
     showProductEdit: function(req, res){
-        db.Product.findByPk(req.params.id)
+        db.Product.findByPk(req.params.id) 
         .then(resultado => {
             res.render('productEdit', {
                 producto: resultado
+            })
+            .catch(error => {
+                console.log(error);
             })
 
         })
@@ -76,14 +85,14 @@ let productController = {
     updateProductEdit: function(req, res){
         let data = req.body; // req.body son todos los campos del formulario (nombre, descripcion, imagen)
 
-        //2)Crear pelicula nueva.
+        //2)Crear producto nueva.
         let producto = {
             image: req.file.filename, // filename = como se llama la imagen
             titulo: data.titulo,    
             usuariosId: 1, // cambiar cuando tenga login.        
             description: data.description
         }
-        //3)Guardar película
+        //3)Guardar producto
         db.Product.update(producto, {
             where:{
                 id:req.body.id
