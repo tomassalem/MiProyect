@@ -1,7 +1,7 @@
 let productosComputacion = require('../data/data');
 const bcrypt= require('bcryptjs');
 const db = require('../database/models');
-const usuarios= db.usuarios
+const usuarios= db.User
 
 
 const op = db.Sequelize.Op
@@ -16,13 +16,18 @@ let usersController = {
     store: function (req, res){
         //guardar un usuario en la db
         let usuarios = {
-            name: req.body.nombre,
+            nombre: req.body.nombre,
+            apellido: req.body.apellido,
+            nombreusuario: req.body.nombreusuario,
+            fechanacimiento: req.body.fechaNacimiento,
+            telefono: req.body.telefono,
             email: req.body.email,
-            password: bycrypt.hashSync(req.body.password, 10)
+            password: bcrypt.hashSync(req.body.password, 10),
+            image: req.file.filename
         }
-        usuarios.create(usuarios)
+        db.User.create(usuarios)
         .then( user =>{
-            return res.redirect('/login')
+            return res.redirect('/users/login')
         })
         .catch(e => {console.log(e)});
 
