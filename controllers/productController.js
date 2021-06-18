@@ -20,9 +20,7 @@ let productController = {
         .then(data => {
             return res.render('product', {title: 'Tec', producto: data})
         })
-        .catch(error =>{
-            console.log(error);
-        })
+        
     },
     showProductAdd: function (req, res){
         return res.render('productAdd', {title: 'Tec'})
@@ -42,9 +40,6 @@ let productController = {
         )
             .then( data => { // nombre que le das a lo que antes pediste, es decir, lo que la persona buscó.
                 return res.render('searchResults', {title: 'Tec', productosCompu: data}) // mando a la vista la data
-            })
-            .catch(error =>{
-                console.log(error);
             })
     },    
     store: function(req, res){ // meter en la base de datos los productos nuevos
@@ -75,9 +70,6 @@ let productController = {
             res.render('productEdit', {
                 producto: resultado
             })
-            .catch(error => {
-                console.log(error);
-            })
 
         })
         
@@ -101,9 +93,6 @@ let productController = {
             .then( (productoUpdateado) => {
         //4)Redirección
                 return res.redirect('/product/detail/'+req.body.id);
-            })
-            .catch(error => {
-                console.log(error);
             })
     }
 

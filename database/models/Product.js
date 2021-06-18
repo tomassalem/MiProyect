@@ -23,7 +23,10 @@ module.exports = function(sequelize, dataTypes){
             type: dataTypes.STRING,
         },
         createdAt:{
-            type: dataTypes.STRING,
+            type: dataTypes.DATE,
+        },
+        updatedAt:{
+            type: dataTypes.DATE,
         }
 
 

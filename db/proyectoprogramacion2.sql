@@ -4,15 +4,16 @@ USE proyectoprogramacion2;
 
 CREATE TABLE usuarios(
 id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
-	 createdAt TIMESTAMP,
-     updatedAt DATETIME,
+	 createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+     updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
      nombre VARCHAR(80) NOT NULL,
      apellido VARCHAR(30) NOT NULL,
      nombreusuario VARCHAR(30) NOT NULL,
 	 fechanacimiento DATETIME NOT NULL,
      telefono VARCHAR(30),
      email VARCHAR(255)  NOT NULL,
-     password VARCHAR(255) NOT NULL	
+     password VARCHAR(255) NOT NULL,
+     image VARCHAR(255) NOT NULL
 );
      
      
@@ -24,8 +25,8 @@ image VARCHAR(255) NOT NULL,
 titulo VARCHAR(300),
 usuariosId INT UNSIGNED NOT NULL,
 description TEXT,
-createdAt TIMESTAMP,
-updatedAt DATETIME,
+createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
 FOREIGN KEY (usuariosId) REFERENCES usuarios(id)
 );
@@ -35,8 +36,8 @@ id INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 tablaproductosId INT UNSIGNED ,
 usuariosId INT UNSIGNED NOT NULL,
 texto TEXT,
-createdAt TIMESTAMP,
-updatedAt DATETIME,
+createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+updatedAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
 
 FOREIGN KEY (usuariosId) REFERENCES usuarios(id),
@@ -46,12 +47,12 @@ FOREIGN KEY (tablaproductosId) REFERENCES tablaproductos(id)
 
 -- cargar datos de usuarios
 INSERT INTO usuarios
-   VALUES (DEFAULT , DEFAULT, DEFAULT, "Sergio", "Rodriguez", "serodriguez", "1998-03-15", "1130308888", "sergiorodriguez@gmail.com", "sergio123"),
-          (DEFAULT ,DEFAULT, DEFAULT, "Delfina", "Sanchez", "delfisanchez", "1789-05-30", "1130257658", "delfisanchez@gmail.com", "vskwano"),
-          (DEFAULT , DEFAULT, DEFAULT, "Micaela", "Areas", "micaareas", "2002-08-27", "1123425675", "micaareas19@gmail.com", "micacontraseña"),
-          (DEFAULT ,DEFAULT, DEFAULT, "Sofia", "Puertos", "sofipuertos1", "2001-04-09", "1178963458", "sofipuertos1@gmail.com", "sofiia"),
-		  (DEFAULT ,DEFAULT, DEFAULT, "Alma", "Juarez", "almajuarezz", "1999-05-10", "1130356723", "almajuarez@hotmail.com", "almajuarez124"),
-          (DEFAULT ,DEFAULT, DEFAULT, "Nicolas", "Drones", "nicodrones", "2000-03-04", "1567892310", "nicodrones@hotmail.com", "nicoo2021");
+   VALUES (DEFAULT , DEFAULT, DEFAULT, "Sergio", "Rodriguez", "serodriguez", "1998-03-15", "1130308888", "sergiorodriguez@gmail.com", "sergio123", "default-image.png"),
+          (DEFAULT ,DEFAULT, DEFAULT, "Delfina", "Sanchez", "delfisanchez", "1789-05-30", "1130257658", "delfisanchez@gmail.com", "vskwano", "default-image.png"),
+          (DEFAULT , DEFAULT, DEFAULT, "Micaela", "Areas", "micaareas", "2002-08-27", "1123425675", "micaareas19@gmail.com", "micacontraseña", "default-image.png"),
+          (DEFAULT ,DEFAULT, DEFAULT, "Sofia", "Puertos", "sofipuertos1", "2001-04-09", "1178963458", "sofipuertos1@gmail.com", "sofiia", "default-image.png"),
+		  (DEFAULT ,DEFAULT, DEFAULT, "Alma", "Juarez", "almajuarezz", "1999-05-10", "1130356723", "almajuarez@hotmail.com", "almajuarez124", "default-image.png"),
+          (DEFAULT ,DEFAULT, DEFAULT, "Nicolas", "Drones", "nicodrones", "2000-03-04", "1567892310", "nicodrones@hotmail.com", "nicoo2021", "default-image.png");
    
 -- cargar datos de tablaproductos
 INSERT INTO tablaproductos

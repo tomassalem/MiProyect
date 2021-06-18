@@ -38,6 +38,9 @@ module.exports = function(sequelize, dataTypes){
         },
         password: {
             type: dataTypes.STRING
+        },
+        image: {
+            type: dataTypes.STRING
         }
     }
 

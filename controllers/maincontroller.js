@@ -14,9 +14,6 @@ let mainController = {
             .then( data => { // nombre que le das a lo que acabas de pedir, el resultado de la linea de arriba.
                 return res.render('index', {title: 'Tec', productosCompu: data}) // mando a la vista la data
             })
-            .catch(error =>{
-                console.log(error);
-            })
     }   
 
 }

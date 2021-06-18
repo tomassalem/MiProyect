@@ -22,7 +22,9 @@ module.exports = function(sequelize, dataTypes){
         createdAt:{
             type: dataTypes.DATE,
         },
-    
+        updatedAt:{
+            type: dataTypes.DATE,
+        }
     }
 
     let config = {
