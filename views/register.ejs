@@ -6,7 +6,15 @@
 
 <body>
 	<!-- Header -->
+	<% if (log) { %>
+	<%- include('./partials/headerLogueado') %>
+
+	<% } else{ %>
 	<%- include('./partials/headerNoLogueado') %>
+
+	<% } %>
+
+	<!-- /Header -->
 	<!-- /Header -->
 
 	<!-- Novedades -->
@@ -16,8 +24,8 @@
 				<h2 class="products-title">Registrate</h2>
 			</div>
 		</div>
-			<!-- Show the "ultimos" products -->
-			<!-- <h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de registro. <br>
+		<!-- Show the "ultimos" products -->
+		<!-- <h2 class="col-12"> <i>///////////////////////////////////////// <br> Acá va el formulario de registro. <br>
 			Debe cumplir con los puntos de la consigna y ser coherente con la tabla de la base de datos <br>
 			Eliminen estás líneas y coloquen el formulario. <br>
 			Recuerden todo lo que necesita tanto la etiqueta form como los campos input para operar correctamtente</i> <br>
@@ -28,48 +36,60 @@
 			<form class="form" action="/users/register" method="POST" enctype="multipart/form-data">
 				<div class="mb-3">
 					<label for="nombre" class="form-label">Nombre</label>
-					<input class="form-control form-control-lg" type="text" name="nombre" id="nombre" placeholder="Ingresá tu nombre" required>
+					<input class="form-control form-control-lg" type="text" name="nombre" id="nombre"
+						placeholder="Ingresá tu nombre" required>
 				</div>
-				
+
 				<div class="mb-3">
 					<label for="apellido" class="form-label">Apellido</label>
-					<input class="form-control form-control-lg" type="text" name="apellido" id="apellido" placeholder="Ingresá tu apellido" required>
+					<input class="form-control form-control-lg" type="text" name="apellido" id="apellido"
+						placeholder="Ingresá tu apellido" required>
 				</div>
 				<div class="mb-3">
 					<label for="nombreusuario" class="form-label">Nombre De Usuario</label>
-					<input class="form-control form-control-lg" type="text" name="nombreusuario" id="nombreusuario" placeholder="Ingresá tu nombre de Usuario" required>
+					<input class="form-control form-control-lg" type="text" name="nombreusuario" id="nombreusuario"
+						placeholder="Ingresá tu nombre de Usuario" required>
 				</div>
 				<div class="mb-3">
 					<label for="imagen" class="form-label">Foto de perfil</label>
-					<input class="form-control form-control-lg" type="file" name="imagen" id="imagen" placeholder="Insertar imagen" required>
+					<input class="form-control form-control-lg" type="file" name="imagen" id="imagen"
+						placeholder="Insertar imagen" required>
 				</div>
 				<div class="mb-3">
 					<label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label>
-					<input class="form-control form-control-lg" type="date" name="fechaNacimiento" id="fechaNacimiento" placeholder="Ingresá tu apellido" required>
+					<input class="form-control form-control-lg" type="date" name="fechaNacimiento" id="fechaNacimiento"
+						placeholder="Ingresá tu apellido" required>
 				</div>
 				<div class="mb-3">
 					<label for="telefono" class="form-label">Telefono</label>
-					<input class="form-control form-control-lg" type="text" name="telefono" id="telefono" placeholder="Ingresá tu numero telefónico" required>
+					<input class="form-control form-control-lg" type="text" name="telefono" id="telefono"
+						placeholder="Ingresá tu numero telefónico" required>
 				</div>
 				<div class="mb-3">
 					<label for="email" class="form-label">Email</label>
-					<input class="form-control form-control-lg" type="text" name="email" id="email" placeholder="Ingresá tu Email" required>
+					<input class="form-control form-control-lg" type="text" name="email" id="email"
+						placeholder="Ingresá tu Email" required>
 				</div>
 				<div class="mb-3">
 					<label for="password" class="form-label">Contraseña</label>
-					<input class="form-control form-control-lg" type="password" name="password" id="password" placeholder="Insertá tu Contraseña" required>
+					<input class="form-control form-control-lg" type="password" name="password" id="password"
+						placeholder="Insertá tu Contraseña" required>
 				</div>
-				
+				<% if (error) { %>
+				<p><%= error %> </p>
+
+				<% } %>
+
 				<div class="mb-3">
 					<button class="btn btn-secondary btn-lg" type="submit">Enviar Datos</button>
 				</div>
 			</form>
 		</div>
+</div>
 
-
-	<!-- footer -->
-	<%- include('./partials/footer') %> 
-	<!-- /footer -->
+		<!-- footer -->
+		<%- include('./partials/footer') %>
+		<!-- /footer -->
 </body>
 
 </html>

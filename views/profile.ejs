@@ -5,8 +5,15 @@
 <body>
 	<!-- Header -->
 	
-	<%- include('./partials/headerLogueado') %>
-	
+	<% if (log) { %>
+		<%- include('./partials/headerLogueado') %>
+	 
+	<% } else{ %>
+		<%- include('./partials/headerNoLogueado') %>
+
+	<% } %>
+
+	<!-- /Header -->	
 	<!-- /Header -->
 
 	<!-- Datos del usuario -->

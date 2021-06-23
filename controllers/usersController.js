@@ -19,40 +19,87 @@ let usersController = {
         })
     },
     register: function (req, res){
+        if(req.session.usuarios){
+            res.redirect("/")
+        }else {
+            return res.render('register', {title: 'Tec', error: null})
+
+        }
         
-        return res.render('register', {title: 'Tec'})
     },
     store: function (req, res){
         //guardar un usuario en la db
-        let usuarios = {
-            nombre: req.body.nombre,
-            apellido: req.body.apellido,
-            nombreusuario: req.body.nombreusuario,
-            fechanacimiento: req.body.fechaNacimiento,
-            telefono: req.body.telefono,
-            email: req.body.email,
-            password: bcrypt.hashSync(req.body.password, 10),
-            image: req.file.filename
+        if(!req.body.nombre || !req.body.apellido || !req.body.nombreusuario || !req.body.fechaNacimiento || !req.body.telefono || !req.body.email || !req.body.password || !req.file){
+            return res.render('register', {title: 'Tec', error: "No pueden haber campos vacíos"})
         }
-        db.User.create(usuarios)
-        .then( user =>{
-            return res.redirect('/users/login')
+        if (req.body.password.length<3){
+            return res.render('register', {title: 'Tec', error: "La contraseña debe tener al menos tres caracteres"})
+
+        }
+        db.User.findOne({
+            where: {
+                email: req.body.email
+            }
+        }).then(resultado=> {
+            if(!resultado) {
+
+                let usuarios = {
+                    nombre: req.body.nombre,
+                    apellido: req.body.apellido,
+                    nombreusuario: req.body.nombreusuario,
+                    fechanacimiento: req.body.fechaNacimiento,
+                    telefono: req.body.telefono,
+                    email: req.body.email,
+                    password: bcrypt.hashSync(req.body.password, 10),
+                    image: req.file.filename
+                }
+                db.User.create(usuarios)
+                .then( user =>{
+                    return res.redirect('/users/login')
+                })
+                .catch(e => {console.log(e)});
+            }else{
+                return res.render('register', {title: 'Tec', error: "Ya hay un usuario registrado con ese email"})
+
+            }
         })
-        .catch(e => {console.log(e)});
 
     },
     login: function (req, res){
          //buscar el usuario que se quiere loguear
-         db.usuarios.findOne({
-            where: [{email: req.body.email}]
-        })
-        .then(usuarios => {
-            req.session.usuarios= user;
-            return res.redirect('/');
-        })
-        .catch(e => {console.log(e)})
+         if(req.session.usuarios){
+             res.redirect("/")
+         }else {
+            res.render("login", {
+                error: null
+            })
+         }
     
         
+    },
+    loginPost: function(req, res) {
+        if (!req.body.user || !req.body.password){
+            res.render("login", {
+                error: "No puede haber ningún campo vacío"
+            })
+        }
+        db.User.findOne({
+            where: [{email: req.body.user}]
+        })
+        .then(usuarios => {
+            let contra = req.body.password
+            let pass = usuarios.password
+            if(usuarios && bcrypt.compareSync(contra, pass)){
+
+            req.session.usuarios= usuarios;
+            return res.redirect('/');
+        } else{
+            res.render("login", {
+                error: "El usuario o contraseña son incorrectos"
+            })
+        }
+        })
+        .catch(e => {console.log(e)})
     },
     profileEdit: function (req, res){
         return res.render('profile-Edit', {title: 'Tec'})
@@ -62,6 +109,7 @@ let usersController = {
         req.session.destroy();
 
         //si hay una cookie hay que eliminar la cookie
+        res.clearCookie("userId")
 
         //hay que redireccionar a home
         return res.redirect('/')

@@ -6,8 +6,15 @@
 
 <body>
 	<!-- Header -->
-<%- include('./partials/headerNoLogueado') %>
-	<!-- /Header -->
+	<% if (log) { %>
+		<%- include('./partials/headerLogueado') %>
+	 
+	<% } else{ %>
+		<%- include('./partials/headerNoLogueado') %>
+
+	<% } %>
+
+	<!-- /Header -->	<!-- /Header -->
 
 	<!-- Novedades -->
 	<div class="container products-wrapper">

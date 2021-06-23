@@ -4,8 +4,15 @@
 <%- include('./partials/head') %>
 <body>
 	<!-- Header -->
-	<%- include('./partials/headerNoLogueado') %>
-	<!-- /Header -->
+	<% if (log) { %>
+		<%- include('./partials/headerLogueado') %>
+	 
+	<% } else{ %>
+		<%- include('./partials/headerNoLogueado') %>
+
+	<% } %>
+
+	<!-- /Header -->	<!-- /Header -->
 	
 	<!-- product detail -->
 	<div class="container products-wrapper">

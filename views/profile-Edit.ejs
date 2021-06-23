@@ -2,8 +2,15 @@
 <html lang="es">
 <!-- Include Head -->
 
-<%- include('./partials/head') %>
+<% if (log) { %>
+	<%- include('./partials/headerLogueado') %>
+ 
+<% } else{ %>
+	<%- include('./partials/headerNoLogueado') %>
 
+<% } %>
+
+<!-- /Header -->
 <body>
 	<!-- Header -->
 	

@@ -6,8 +6,15 @@
 
 <body>
 	<!-- Header -->
-	<%- include('./partials/headerNoLogueado')%>
-	<!-- Novedades -->
+	<% if (log) { %>
+		<%- include('./partials/headerLogueado') %>
+	 
+	<% } else{ %>
+		<%- include('./partials/headerNoLogueado') %>
+
+	<% } %>
+
+	<!-- /Header -->	<!-- Novedades -->
 	<div class="container products-wrapper">
 		<div class="row">
 			<div class="col-12">
@@ -15,7 +22,7 @@
 			</div>
 			<!-- Show the "ultimos" products -->
 			
-			<form class="form" action="profile" method="get">
+			<form class="form" action="/users/login" method="post">
 				<div class="mb-3">
 					<label for="exampleFormControlInput1" class="form-label">Ingrese nombre de usuario</label>
 					<input class="form-control form-control-lg" type="text" name="user" placeholder="Ingresá tu usuario" required>
@@ -24,6 +31,10 @@
 					<label for="exampleFormControlInput1" class="form-label">Ingrese contraseña</label>
 					<input class="form-control form-control-lg" type="password" name="password" placeholder="Ingresá tu contraseña" required>
 				</div>
+				<% if (error) { %>
+					<p><%= error %> </p>
+				 
+				<% } %>
 				<div class="mb-3">
 					<button class="btn btn-secondary btn-lg" type="submit">Iniciar sesión</button>
 				</div>
