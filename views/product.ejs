@@ -73,10 +73,11 @@
 						</article> -->
 
 					</section>
-					<form class="form" action="" method="POST">
-						<input class="form-input" type="text" value="" placeholder="Agregar comentario">
+					<form class="form" action="/product/comment" method="POST">
+						<input class="form-input" type="text" value="" name="texto" placeholder="Agregar comentario">
+						<input type="hidden" value="<%= producto.id %>" name="idProduct">
+						<input type="hidden" value="" name="usuariosId">
 						<button type="submit" class="buy-now-button">AGREGAR COMENTARIO</button>
-
 					</form>
 
 					<hr>
@@ -85,17 +86,7 @@
 			</div>
 		</div>
 	</div>
-	<h2><a href="/users/profile/<%= producto.usuarios.id %>"><%= producto.usuarios.nombre %></a></h2>
-	<% for(let i=0; i<producto.usuarios.length; i++){%>
-		<li><%= producto.usuarios[i].nombre + "" + producto.usuarios[i].apellido%> </li>
-
-	<% }  %>  
-	<ul>
-		
-
-		
-	</ul>
-	<!-- /product detail -->
+	<h2><a href="/users/profile/<%= producto.usuarios.id %>">Creado por <%= producto.usuarios.nombre %> <%= producto.usuarios.apellido %></a></h2>
 
 	<!-- footer -->
 	<%- include('./partials/footer') %> 
