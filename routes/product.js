@@ -26,5 +26,6 @@ router.get('/searchResults', productController.search);
 router.get('/detail/:id', productController.product);
 router.get('/productEdit/:id', productController.showProductEdit);
 router.post('/productEdit', upload.single('image') ,productController.updateProductEdit); // nos permite guardar la imagen. El titulo y descripcion se guardan con el post
+router.post('/comment',productController.comment);
 
 module.exports = router;
