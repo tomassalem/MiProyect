@@ -21,7 +21,9 @@ let productController = {
                     {
                         association: 'usuarios'
                     }
-                ]
+                ],
+                order: [["comentarios", "createdAt", "desc"]]
+
             })
             .then(data => {
                 return res.render('product', {
@@ -76,7 +78,7 @@ let productController = {
         let producto = {
             image: req.file.filename, // filename = como se llama la imagen
             titulo: data.titulo,
-            usuariosId: 1, // cambiar cuando tenga login.        
+            usuariosId: req.session.usuarios.id, // cambiar cuando tenga login.        
             description: data.description
         }
         //3)Guardar producto
@@ -122,22 +124,27 @@ let productController = {
     },
     comment: function (req, res) {
         let data = req.body;
+        if(req.session.usuarios){
+            let comentario = {
+                tablaproductosId: data.idProduct,
+                usuariosId: req.session.usuarios.id,
+                texto: data.texto
+            }
+            //3)Guardar producto
+            db.Comment.create(comentario)
+                .then(() => {
+                    //4)Redirección
+                    return res.redirect('/product/detail/'+req.body.idProduct);
+                })
+                .catch(error => {
+                    console.log(error);
+                })
+
+        }else{
+            res.redirect("/users/login")
+        }
 
         //2)Crear comentario nuevo.
-        let comentario = {
-            tablaproductosId: data.idProduct,
-            usuariosId: 1,
-            texto: data.texto
-        }
-        //3)Guardar producto
-        db.Comment.create(comentario)
-            .then(() => {
-                //4)Redirección
-                return res.redirect('/');
-            })
-            .catch(error => {
-                console.log(error);
-            })
     }
 
 }
