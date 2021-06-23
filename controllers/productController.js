@@ -12,14 +12,13 @@ let productController = {
         // }
         let id = req.params.id;
         db.Product.findByPk(id, {
-            include : [{association: 'usuarios',include: {association : 'comentarios'}}
-                
-                
-            ]
-        })
+            include : [{association: 'comentarios', include: {association : 'usuarios'}}, 
+        {association: 'usuarios'}
+        ]})
         .then(data => {
             return res.render('product', {title: 'Tec', producto: data})
         })
+        
         
     },
     showProductAdd: function (req, res){

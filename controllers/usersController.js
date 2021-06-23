@@ -7,7 +7,16 @@ const usuarios= db.User
 const op = db.Sequelize.Op
 let usersController = {
     profile: function (req, res){
-        return res.render('profile', {title: 'Tec', productosCompu: productosComputacion})
+
+
+        db.User.findByPk(req.params.id, {
+            include: [{
+                association: 'tablaproductos'
+            }]
+            })
+        .then(data =>{
+            return res.render('profile', {title: 'Tec', usuario: data})
+        })
     },
     register: function (req, res){
         
