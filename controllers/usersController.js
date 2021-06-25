@@ -20,7 +20,7 @@ let usersController = {
     },
     register: function (req, res){
         if(req.session.usuarios){
-            res.redirect("/")
+            return res.redirect("/")
         }else {
             return res.render('register', {title: 'Tec', error: null})
 
