@@ -87,11 +87,14 @@ let usersController = {
             where: [{email: req.body.user}]
         })
         .then(usuarios => {
-            let contra = req.body.password
-            let pass = usuarios.password
-            if(usuarios && bcrypt.compareSync(contra, pass)){
+            if(usuarios && bcrypt.compareSync(req.body.password, usuarios.password)){
 
             req.session.usuarios= usuarios;
+        if(req.body.remember){
+            res.cookie("userId", usuarios.id, {
+                maxAge: 1000*60*5
+            })
+        }
             return res.redirect('/');
         } else{
             res.render("login", {
@@ -102,7 +105,11 @@ let usersController = {
         .catch(e => {console.log(e)})
     },
     profileEdit: function (req, res){
-        return res.render('profile-Edit', {title: 'Tec'})
+        db.User.findByPk(req.params.id) 
+        .then(resultado=>{
+            return res.render('profile-Edit', {title: 'Tec', resultado: resultado, error: null})
+        })
+
     },
     logout: function(req, res){
         //tenemos que destruir la sesion 
@@ -113,6 +120,53 @@ let usersController = {
 
         //hay que redireccionar a home
         return res.redirect('/')
+    },
+    update: (req, res)=>{
+        console.log("ESTE ES EL ID" + req.body.id)
+        db.User.findByPk(req.body.id) 
+        .then(resultado=>{
+            //if (!req.body.nombre || !req.body.apellido || !req.body.telefono || !req.body.nombreusuario){
+            //    return res.render('profile-Edit', {title: 'Tec', resultado: resultado, error: "No pueden haber campos vacíos"})
+
+            //}
+            if(req.body.password){
+                db.User.update({
+                    nombre: req.body.nombre,
+                    apellido: req.body.apellido,
+                    nombreusuario: req.body.nombreusuario,
+                    telefono: req.body.telefono,
+                    password: bcrypt.hashSync(req.body.password, 10),
+                },
+                {
+                    where: {
+                        id: req.body.id
+                    }
+                })
+                .then(usuario=>{
+                    req.session.usuario=usuario
+                    res.redirect("/users/profile/" + req.body.id)
+
+                })
+            }else{
+                db.User.update({
+                nombre: req.body.nombre,
+                apellido: req.body.apellido,
+                nombreusuario: req.body.nombreusuario,
+                telefono: req.body.telefono,
+            },
+            {
+                where: {
+                    id: req.body.id
+                }
+            })
+            .then(usuario=>{
+                req.session.usuario=usuario
+                res.redirect("/users/profile/" + req.body.id)
+            })
+
+            }
+        })
+        
     }
 }
 

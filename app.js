@@ -32,12 +32,8 @@ app.use(session(
 
 
 app.use(function(req, res, next){
-  console.log('En session middleware');
-  console.log(req.session.usuarios);
   if(req.session.usuarios != undefined){
     res.locals.usuarios = req.session.usuarios;
-    console.log("entre en locals: ");
-    console.log(res.locals);
     return next();
   } 
   return next(); //Clave para que el proceso siga adelante.  
@@ -51,11 +47,8 @@ app.use(function(req, res, next){
     
     db.User.findByPk(idDeLaCookie)
     .then( user => {
-      console.log('en cookie middleware trasladando');
-      req.session.usuarios = usuarios; //Estamos poniendo en session a toda la instancia del modelo. Debería ser solo user.dataValues.
-      console.log('en cookie middleware');
-      console.log(req.session.usuarios);
-      res.locals.usuarios = usuarios; //Se corrije si usamos user.dataValues
+      req.session.usuarios = user; //Estamos poniendo en session a toda la instancia del modelo. Debería ser solo user.dataValues.
+      res.locals.usuarios = user; //Se corrije si usamos user.dataValues
       return next();
     })
     .catch( e => {console.log(e)})

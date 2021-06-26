@@ -23,8 +23,10 @@ router.post('/register', upload.single('imagen'), usersController.store);
 router.get('/login', usersController.login);
 router.post('/logout', usersController.logout);
 router.get('/profile/:id', usersController.profile);
-router.get('/profile-Edit', usersController.profileEdit);
+router.get('/profile-Edit/:id', usersController.profileEdit);
 router.post('/login', usersController.loginPost);
+router.post('/profile-Edit', usersController.update);
+
 
 
 module.exports = router;

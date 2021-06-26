@@ -108,7 +108,7 @@ let productController = {
         let producto = {
             image: req.file.filename, // filename = como se llama la imagen
             titulo: data.titulo,
-            usuariosId: 1, // cambiar cuando tenga login.        
+            usuariosId: req.session.usuario, // cambiar cuando tenga login.        
             description: data.description
         }
         //3)Guardar producto
@@ -145,6 +145,13 @@ let productController = {
         }
 
         //2)Crear comentario nuevo.
+    },
+    delete: (req, res)=>{
+        db.Product.destroy({
+            where: {
+                id: req.body.id
+            }
+        }) .then(()=>res.redirect("/"))
     }
 
 }
