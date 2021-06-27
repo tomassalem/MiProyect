@@ -94,9 +94,15 @@ let productController = {
     showProductEdit: function (req, res) {
         db.Product.findByPk(req.params.id)
             .then(resultado => {
-                res.render('productEdit', {
-                    producto: resultado
-                })
+                if (!resultado) {
+                    res.redirect('/')
+                } else if (resultado.usuariosId == req.session.usuarios.id) {
+                    res.render('productEdit', {
+                        producto: resultado
+                    })
+                } else{
+                    res.redirect('/')
+                }
 
             })
 

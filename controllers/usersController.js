@@ -1,7 +1,6 @@
 let productosComputacion = require('../data/data');
 const bcrypt= require('bcryptjs');
 const db = require('../database/models');
-const usuarios= db.User
 
 
 const op = db.Sequelize.Op
@@ -107,7 +106,13 @@ let usersController = {
     profileEdit: function (req, res){
         db.User.findByPk(req.params.id) 
         .then(resultado=>{
+            if (!resultado) {
+                res.redirect('/')
+            } else if (resultado.id == req.session.usuarios.id) {
             return res.render('profile-Edit', {title: 'Tec', resultado: resultado, error: null})
+            } else {
+                res.redirect('/')
+            }
         })
 
     },
